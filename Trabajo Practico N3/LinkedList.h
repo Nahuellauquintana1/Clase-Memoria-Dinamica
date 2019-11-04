@@ -34,6 +34,7 @@ struct LinkedList
 /** retorna -1 si el puntero esta en NULL
     retorna 0 si todo esta ok
 **/
+
 //Publicas
 LinkedList* ll_newLinkedList(void);
 int ll_len(LinkedList* this);

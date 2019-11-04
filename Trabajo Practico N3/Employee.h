@@ -25,7 +25,10 @@ int employee_setSueldo(Employee* this,int sueldo);
 int employee_getSueldo(Employee* this,int* sueldo);
 
 void mostrarEmpleado(Employee* emp);
-
+int mostrarLista(Employee* lista);
 int sortEmpleadoId(void*,void*);
 int sortEmpleadoName(void*,void* );
+Employee* altaEmpleado ();
+int buscarIndice(Employee* lista,int id);
+
 #endif // employee_H_INCLUDED

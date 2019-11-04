@@ -13,6 +13,7 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
+
     return 1;
 }
 
@@ -97,6 +98,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
+
     return 1;
 }
 

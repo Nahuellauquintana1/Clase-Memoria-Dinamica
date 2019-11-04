@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Employee.h"
-
-
+#include "LinkedList.h"
+#include "validar.h"
 
 int employee_setId(Employee* this,int id)
 {
@@ -146,33 +146,34 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
     Employee* this;
 
-        if (idStr != NULL && nombreStr != NULL && horasTrabajadasStr != NULL && sueldoStr != NULL)
+    if (idStr != NULL && nombreStr != NULL && horasTrabajadasStr != NULL && sueldoStr != NULL)
+    {
+        this  = employee_new();
+
+        if( this != NULL)
         {
-            this  = employee_new();
 
-            if( this != NULL){
 
-            if( !employee_setId(this, atoi(idStr))||
+                    this->id = atoi(idStr);
 
-                !employee_setNombre(this, nombreStr) ||
+                    strcpy(this->nombre,nombreStr);
 
-                !employee_setHorasTrabajadas(this, atoi(horasTrabajadasStr)) ||
+                    this->horasTrabajadas = atoi(horasTrabajadasStr);
 
-                !employee_setSueldo(this, atoi(sueldoStr)))
-                       {
-                            free(this);
-                            this = NULL;
-                       }
-            }
+                    this->sueldo = atoi(sueldoStr);
+
         }
+    }
 
     return this;
 }
 
 
-void mostrarEmpleado(Employee* emp){
-    if(emp != NULL){
-    printf("%10d %20s %10d %10d\n", emp->id, emp->nombre, emp->horasTrabajadas, emp->sueldo);
+void mostrarEmpleado(Employee* emp)
+{
+    if(emp != NULL)
+    {
+        printf("%10d %20s %10d %10d\n", emp->id, emp->nombre, emp->horasTrabajadas, emp->sueldo);
     }
 }
 
@@ -191,7 +192,8 @@ int sortEmpleadoId(void* e1,void* e2)
     }
     else
     {
-        if(id == id2){
+        if(id == id2)
+        {
             retorno = 0;
         }
 
@@ -217,3 +219,59 @@ int sortEmpleadoName(void* e1,void* e2)
 
     return comparacion;
 }
+
+int mostrarLista(Employee* lista)
+{
+    int i, tam;
+    tam = ll_len(lista);
+
+    Employee* aux;
+    printf("ID\tNombre\t    Horas\t    Sueldo\n");
+    for(i= 0; i<tam ; i++)
+    {
+        aux = (Employee*)ll_get(lista,i);
+        mostrarEmpleado(aux);
+
+    }
+
+
+    return 0;
+}
+
+Employee* altaEmpleado ()
+{
+
+   Employee* unEmpleado = employee_new();
+   char auxNombre[50];
+   int auxHoras[50];
+   int auxSueldo[50];
+
+   //employee_setId();
+   getValidString("Ingrese el nombre del Empleado: ","\nIngrese un Nombre",0,51,auxNombre);
+   employee_setNombre(unEmpleado,auxNombre);
+   getValidInt("Ingrese las Horas trabajadas:","\nIngrese numeros",0,168,auxHoras);
+   employee_setHorasTrabajadas(unEmpleado,auxHoras);
+   getValidInt("Ingrese el sueldo del Empleado: ","\nIngrese un numero",0,100000,auxSueldo);
+   employee_setSueldo(unEmpleado,auxSueldo);
+
+   return unEmpleado;
+
+   }
+///W.I.P
+/*int buscarIndice(Employee* lista,int id)
+{
+    int i, tam,auxId;
+    tam = ll_len(lista);
+    printf("hola");
+    for(i = 0; i < tam; i++)
+    {
+        if( == id)
+        {
+            return i;
+
+        }
+    }
+
+return -1;
+
+}*/

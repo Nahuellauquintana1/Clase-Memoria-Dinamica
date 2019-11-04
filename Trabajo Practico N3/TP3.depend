@@ -84,34 +84,50 @@
 	<string.h>
 	"Employee.h"
 
-1572349712 source:c:\users\alumno\desktop\trabajo practico n3\controller.c
+1572876885 source:c:\users\alumno\desktop\trabajo practico n3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1572351677 c:\users\alumno\desktop\trabajo practico n3\linkedlist.h
+1572870605 c:\users\alumno\desktop\trabajo practico n3\linkedlist.h
 
-1572355761 c:\users\alumno\desktop\trabajo practico n3\employee.h
+1572875416 c:\users\alumno\desktop\trabajo practico n3\employee.h
 
-1572362164 source:c:\users\alumno\desktop\trabajo practico n3\employee.c
+1572880003 source:c:\users\alumno\desktop\trabajo practico n3\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Employee.h"
+	"LinkedList.h"
+	"validar.h"
 
-1572362268 source:c:\users\alumno\desktop\trabajo practico n3\main.c
+1572876276 source:c:\users\alumno\desktop\trabajo practico n3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"validar.h"
 
-1572349712 c:\users\alumno\desktop\trabajo practico n3\controller.h
+1572363205 c:\users\alumno\desktop\trabajo practico n3\controller.h
 
-1572362896 source:c:\users\alumno\desktop\trabajo practico n3\parser.c
+1572876885 source:c:\users\alumno\desktop\trabajo practico n3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
+
+1572871618 source:c:\users\alumno\desktop\trabajo practico n3\validar.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validar.h"
+
+1572871618 c:\users\alumno\desktop\trabajo practico n3\validar.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
 

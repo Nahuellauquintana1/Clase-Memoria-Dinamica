@@ -16,18 +16,16 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
      char nombre [50];
      char horasTrabajadas[50];
      char sueldo[50];
-int i=0;
+     int i=0;
+     Employee* unEmpleado;
      pFile = fopen("data.csv","r");
       fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
      while(!feof(pFile))
     {
         fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horasTrabajadas,sueldo);
 
-        Employee* unEmpleado = employee_newParametros(id,nombre,horasTrabajadas,sueldo);
+        unEmpleado = employee_newParametros(id,nombre,horasTrabajadas,sueldo);
         ll_add(pArrayListEmployee, unEmpleado);
- //ll_get(pArrayListEmployee,i));
-
-
     }
 
     fclose(pFile);

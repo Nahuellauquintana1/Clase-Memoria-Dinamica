@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "validar.h"
 
 /****************************************************
     Menu:
@@ -18,48 +19,70 @@
     10. Salir
 *****************************************************/
 
-
+///Falta ID automatico
 int main()
 {
-    ///int option = 0;
-    int tam;
-
     FILE* dArchivo;
     LinkedList* listaEmpleados = ll_newLinkedList();
-    parser_EmployeeFromText(dArchivo,listaEmpleados);
-
-    //Employee* e1 = employee_newParametros("5","Maria","10","5000");
-    //Employee* e2 = employee_newParametros("2","Jose","20","6000");
-    ///Employee* e3 = employee_newParametros("6","Pedro","15","7000");
-   /// Employee* e4 = employee_newParametros("8","Juan","24","8450");
-
-    //ll_add(listaEmpleados, e1);
-    //ll_add(listaEmpleados, e2);
-   /// ll_add(listaEmpleados, e3);
-  ///  ll_push(listaEmpleados,1, e4);
-    ///ll_set(listaEmpleados,2,e4);
-    ll_sort(listaEmpleados,sortEmpleadoId,1);///lista, funcion SOLO nombre sin parentesis, orden 1 --- 0
-    ///ll_sort(listaEmpleados,sortEmpleadoName,1);
-
-    tam = ll_len(listaEmpleados);
-    int i;
     Employee* aux;
-    printf("ID\tNombre\t    Horas\t    Sueldo\n");
-    for(i= 0; i<tam ; i++)
+    Employee* auxGet;
+    int auxId, auxIndice;
+    int opcion;
+    char auxRemove;
+    do
     {
-        aux = (Employee*)ll_get(listaEmpleados,i);
-        mostrarEmpleado(aux);
+        getValidInt("1. Cargar Datos Textos\n2. Cargar Datos Binario\n3. Alta Epleado\n4. Modificar Empleado\n5. Baja Empleado\n6. Listar Empleados\n7. Ordenar\n8. Guardar modo Texto\n9. Guardar modo Binario\n10. Salir\nOpcion: ","Error Por favor Ingrese numeros Validos",0,11,&opcion);
+
+        switch(opcion)
+        {
+        case 1:
+            parser_EmployeeFromText(dArchivo,listaEmpleados);
+            break;
+        case 2:
+            parser_EmployeeFromBinary(dArchivo,listaEmpleados);
+            break;
+        case 3:
+            aux = (Employee*)altaEmpleado();
+            ll_add(listaEmpleados,aux);
+            break;
+        case 4:
+            ///Modif Empleado
+            break;
+        case 5:
+            mostrarLista(listaEmpleados);
+            getValidInt("Ingrese id del Empleado a Eliminar: ","\nIngerse un Numero valido",0,1000,&auxId);
+            auxGet = (Employee*)ll_get(listaEmpleados,auxId);
+            mostrarEmpleado(auxGet);
+            auxRemove = getChar("Esta seguro que desea Eliminar este empleado? (s/n)");
+            if(auxRemove == 's')
+            {
+                ll_remove(listaEmpleados,auxId);
+                printf("Empleado Eliminado");
+            }
+            break;
+        case 6:
+            mostrarLista(listaEmpleados);
+            break;
+        case 7:
+            printf("Ordenano Espere\n");
+            ll_sort(listaEmpleados,sortEmpleadoId,0);///lista, funcion SOLO nombre sin parentesis, orden 1 --- 0
+            break;
+        case 8:
+            ///Guardar Texto
+            break;
+        case 9:
+            ///Guardar Binario
+            break;
+        case 10:
+            opcion = 10;
+            break;
+        }
+        system("pause");
+        system("cls");
+
 
     }
-
-
-
-    /**ll_clear(listaEmpleados);
-    tam = ll_len(listaEmpleados);
-    printf("\nTam lista despues de ll_clear: %d",tam);
-    **/
-    ///ll_deleteLinkedList(listaEmpleados); borra la lista entera.
-
+    while(opcion!=10);
 
     return 0;
 }
